@@ -1,73 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Github Issue Tracker | Home</title>
-  
-  <!--tailwind css + daisy ui-->
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Issues Tracker | Home</title>
 
-<!-- font awesome-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<!--font-->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
 
-<style>
-*{
-  font-family: "Geist", sans-serif;
-}
-</style>
+    <!-- daisyUi + tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+
+    <!-- daisyUI theme cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+
 </head>
-<body>
-  <header>
-    <nav class="flex flex-col md:flex-row justify-between px-6 py-4 space-y-2">
-      <div class="flex items-center space-x-2">
-        <img class="max-w-[36px]" src="assets/github-logo.png" alt="" />
-        <h1 class="text-lg font-semibold">GitHub Issues Tracker</h1>
-      </div>
-      <div class="flex space-x-3">
-       <label class="input">
-  <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <g
-      stroke-linejoin="round"
-      stroke-linecap="round"
-      stroke-width="2.5"
-      fill="none"
-      stroke="currentColor"
-    >
-      <circle cx="11" cy="11" r="8"></circle>
-      <path d="m21 21-4.3-4.3"></path>
-    </g>
-  </svg>
-  <input id="search-issue" type="search" required placeholder="Search issues" />
-</label>
-        <button id="search-issue-btn" class="btn btn-primary">+ New Issues</button>
-      </div>
-    </nav>
-  </header>
-  
-  <main class="w-[70%] mx-auto bg-gray-100">
-    <section class="bg-white">
-      <div id="tab-container" class="flex px-6 py-6 gap-2 mb-4">
-       <button id="tab-all" onclick="filterIssues('all')" class="px-3 py-1 btn btn-primary rounded cursor-pointer">All</button>
-       <button id="tab-open" onclick="filterIssues('open')" class="px-3 py-1 btn rounded cursor-pointer">Open</button>
-       <button id="tab-closed" onclick="filterIssues('closed')" class="px-3 py-1 btn rounded cursor-pointer">Closed</button>
-      
-      </div>
-    </section>
-    
-    <section>
-      <div class="my-container border-b shadow-sm border-gray-200">
 
-                <div class=" flex items-center justify-between py-4 flex-col sm:flex-row ">
-                    <div class="flex gap-3 mb-4 md:mb-4 ">
+<body>
+
+
+    <header class="z-50 sticky top-0">
+
+        <nav class="border-b border-gray-300 bg-white/70 backdrop-blur-md shadow-sm">
+            <div class="nav-container flex justify-between items-center py-4  flex-col md:flex-row">
+
+                <div class="nav-logo flex gap-3 items-center mt-3 md:mt-0 mb-5 md:mb-0">
+
+                    <img class="h-[36px] w-[36px] " src="./assets/github-logo.png" alt="GitHub Logo">
+
+                    <h2 class="text-2xl font-semibold ">GitHub Issues Tracker</h2>
+
+                </div>
+
+                <div class="flex gap-3">
+                    <label class="input outline-none">
+                        <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                                stroke="currentColor">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.3-4.3"></path>
+                            </g>
+                        </svg>
+                        <input class=" md:w-[63px] lg:w-auto" id="search-issue" type="search"
+                            placeholder="Search issues..." />
+                    </label>
+
+                    <button id="search-issue-btn" class="btn btn-primary hover:opacity-90 text-[14px] px-8">+ New Issue</button>
+                </div>
+
+
+            </div>
+        </nav>
+
+    </header>
+
+
+    <main>
+        <!-- filter section -->
+
+        <section class=" pt-3 md:pt-[clamp(2rem,5vw,2.75rem)] mb-4">
+            <div class="my-container flex gap-4 p-6  shadow-sm flex-wrap ">
+
+                <button onclick="showFilterIssueBtn('all-btn'); filterIssues('all')" id="all-btn"
+                    class="btn text-[14px] sm:px-11 w-[47%] sm:w-auto">
+                    All
+                </button>
+
+                <button onclick="showFilterIssueBtn('open-btn'); filterIssues('open')" id="open-btn"
+                    class="btn text-[14px] sm:px-10  w-[47%] sm:w-auto">
+                    Open
+                </button>
+
+                <button onclick="showFilterIssueBtn('close-btn'); filterIssues('closed')" id="close-btn"
+                    class="btn text-[14px] sm:px-9 w-full sm:w-auto">
+                    Closed
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- issue section and  all card section -->
+        <section>
+
+            <div class="my-container border-b shadow-sm border-gray-200">
+
+                <div class=" flex items-center justify-between py-4 flex-col sm:flex-row w-[70%] mx-auto">
+                    <div class="flex gap-3  mb-4 md:mb-0 ">
                         <div class="w-[50px] h-[50px] rounded-full bg-[#ece4ff] flex justify-center items-center">
                             <img src="./assets/Aperture.png" alt="">
                         </div>
@@ -91,24 +121,41 @@
 
             </div>
 
-    </section>
-  </main>
-  
-  <!--Card-->
-  <div class="w-[70%] mx-auto">
-    <div id="issues-container" class="grid grid-cols-1 sm:grid-cols-4 gap-3">
-      
-    </div>
-    <div id="loading-spinner" class="h-[60vh] hidden justify-center items-center">
-      <span class="loading loading-dots loading-xl"></span>
-    </div>
-    <div id="modal_container">
-      <div onclick="allActiveCard(displayShowModal)" id="modal_card" class="modal">
-        
-      </div>
-    </div>
-  </div>
-  
-  <script src="script/home.js"></script>
+
+            <!-- all card container -->
+            <div class=" my-container bg-white shadow-sm justify-between ">
+
+                <!-- all card section -->
+                <div id="issue-all-card"
+                    class="w-[70%] mx-auto py-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 items-stretch">
+
+
+                </div>
+
+                <div id="spinner-container" class=" flex justify-center items-center py-30 hidden">
+                    <span class="loading loading-bars loading-xl"></span>
+                </div>
+
+            </div>
+
+
+            <!-- modal -->
+
+
+            <dialog id="modal_card" class="modal modal-middle">
+                <div id="modal_container" class="modal-box space-y-3 max-w-[clamp(20rem,90vw,43.75rem)]">
+
+
+                </div>
+            </dialog>
+
+            
+        </section>
+
+    </main>
+
+
+    <script src="script/home.js"></script>
 </body>
+
 </html>
