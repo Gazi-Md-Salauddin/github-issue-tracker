@@ -79,13 +79,13 @@ const allActiveCard = async (id) => {
 
 // modal function 
 function displayShowModal(card) {
-    // console.log(card)
+   
     const modalContainer = document.getElementById("modal_container")
     modalContainer.innerHTML = "";
 
     const div = document.createElement("div")
     div.innerHTML = `
-                        <div class="space-y-6 border-[2px] border-opacity-100  rounded-md p-4 ${card.status === "closed" ? "border-[#a855f7]" : "border-[#22b780]"}">
+                        <div class="space-y-6 rounded-md p-4 ${card.status === "closed"}">
 
                           <div>
                               <h2 class="font-semibold text-2xl mb-2">${card.title}</h2>
@@ -132,8 +132,7 @@ function displayShowModal(card) {
               
                           <div class="modal-action">
                               <form method="dialog">
-                                  <button class="btn bg-gradient-to-r  from-purple-600 via-purple-500 to-blue-500 
-                                      hover:opacity-90 transition text-white px-7 rounded-md">Close</button>
+                                  <button class="btn btn-primary hover:opacity-90 px-7 rounded-md">Close</button>
                               </form>
                           </div>
               
