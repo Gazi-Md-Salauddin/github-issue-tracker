@@ -203,7 +203,7 @@ cursor-pointer">
                   <div class="p-[10px]  flex flex-col flex-grow space-y-3 border-b border-gray-300">
                             <!-- icon & media -->
                             <div class="flex justify-between">
-                            ${issue.status === "open" ? `<img class="h-[30px] w-[30px] rounded-full transition duration-300 group-hover:scale-110" src="./assets/Open-Status.png" alt="">` : `<img class="h-[30px] w-[30px] rounded-full transition duration-300 group-hover:scale-110" src="./assets/Closed-Status.png" alt="">`}
+                            ${issue.status === "open" ? `<img src="assets/Open-Status.png" alt="">` : `<img src="assets/Closed- Status .png" alt="">`}
                               
                                 <p class="font-semibold text-sm px-4 py-1 rounded-2xl">
                          ${issue.priority === "high" ? `<span class="font-semibold text-sm px-4 py-1 bg-red-100 text-red-400 rounded-2xl"> ${issue.priority.toUpperCase()}</span>`
